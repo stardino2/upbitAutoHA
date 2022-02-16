@@ -1,2 +1,2 @@
 # upbitAutoHA
-HeikenAshi trading
+Heikin Ashi trading
