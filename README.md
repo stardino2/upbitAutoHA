@@ -1,0 +1,2 @@
+# upbitAutoHA
+HeikenAshi trading
