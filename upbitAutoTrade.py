@@ -9,7 +9,7 @@ from slacker import Slacker
 print("login start")
 upbit = login()
 print("login end")
-myToken = "xoxb-3187506576960-3149162496183-PBto9QmpKAvGmboBwt4llO5o"
+myToken = "xoxb-3187506576960-3149162496183-TOT2K4AjuepmqlooD0NDpST7"
 
 slack = Slacker(myToken)
 
@@ -50,14 +50,15 @@ while True:
         heikinAshiDf = heikinAshi(origDf)
         flag = 1
         
-        if ((heikinAshiDf['HAclose'][198] > heikinAshiDf['HAopen'][198]) and \
-            (heikinAshiDf['low'][199] / heikinAshiDf['open'][199] > 0.98)) and flag == 1: 
+        # if ((heikinAshiDf['HAclose'][198] > heikinAshiDf['HAopen'][198]) and \
+        #     (heikinAshiDf['low'][199] / heikinAshiDf['open'][199] > 0.98)) and flag == 1: 
+        if (heikinAshiDf['HAclose'][198] > heikinAshiDf['HAopen'][198]) and flag == 1: 
             flag = 0 
             krw = get_balance("KRW")
             if krw > 5000:
                 buy_result = upbit.buy_market_order("KRW-MANA", krw*0.9995)
                 print('buy', buy_result)
-                post_message(myToken,"#upbit", "MANA buy : " +str('buy_result'))
+                post_message(myToken,"#upbit", "MANA buy : " +str(buy_result))
             
         elif (heikinAshiDf['HAclose'][198] < heikinAshiDf['HAopen'][198]) and flag == 0 :
             flag = 1
@@ -65,15 +66,15 @@ while True:
             if coinBalance > 1:
                 sell_result = upbit.sell_market_order("KRW-MANA", coinBalance*0.9995)
                 print('sell 1', buy_result)
-                post_message(myToken,"#upbit", "MANA sell : " +str('sell_result'))
+                post_message(myToken,"#upbit", "MANA sell : " +str(sell_result))
             
-        elif (heikinAshiDf['low'][199] / heikinAshiDf['open'][199] < 0.98) and flag == 0 : 
-            flag = 1
-            coinBalance = get_balance("MANA")
-            if coinBalance > 1:
-                sell_result = upbit.sell_market_order("KRW-MANA", coinBalance*0.9995)
-                print('sell 2', buy_result)
-                post_message(myToken,"#upbit", "MANA sell : " +str('sell_result'))
+        # elif (heikinAshiDf['low'][199] / heikinAshiDf['open'][199] < 0.98) and flag == 0 : 
+        #     flag = 1
+        #     coinBalance = get_balance("MANA")
+        #     if coinBalance > 1:
+        #         sell_result = upbit.sell_market_order("KRW-MANA", coinBalance*0.9995)
+        #         print('sell 2', buy_result)
+        #         post_message(myToken,"#upbit", "MANA sell : " +str(sell_result))
                 
         print('now :', now ,'price' ,get_current_price("KRW-MANA"),'KRW', get_balance('KRW'), 'MANA', get_balance('MANA'))
         time.sleep(10)
