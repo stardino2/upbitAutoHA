@@ -9,7 +9,7 @@ from slacker import Slacker
 print("login start")
 upbit = login()
 print("login end")
-myToken = "xoxb-3187506576960-3149162496183-oS4JOR7hvLuEHgMB2SluRbtL"
+myToken = "xoxb-3187506576960-3149162496183-PBto9QmpKAvGmboBwt4llO5o"
 
 slack = Slacker(myToken)
 
