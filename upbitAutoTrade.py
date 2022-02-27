@@ -9,7 +9,7 @@ from slacker import Slacker
 print("login start")
 upbit = login()
 print("login end")
-myToken = "xoxb-3187506576960-3149162496183-TOT2K4AjuepmqlooD0NDpST7"
+myToken = "xoxb-3187506576960-3149162496183-bW9t043ZmCwwg0jARs2jRZ02"
 
 slack = Slacker(myToken)
 
@@ -57,7 +57,7 @@ while True:
             flag = 0 
             print('3')
             krw = get_balance("KRW")
-            if krw > 5000:
+            if krw > 50000:
                 print('4')
                 buy_result = upbit.buy_market_order("KRW-MANA", krw*0.9995)
                 print('buy', buy_result)
