@@ -1,6 +1,6 @@
 import numpy as np
 
-def buySell2(df, origDf, closePrice, openPrice):
+def buySellTest2(df, origDf, closePrice, openPrice):
     sigPriceBuy = [] 
     sigPriceSell = []
     total = []
